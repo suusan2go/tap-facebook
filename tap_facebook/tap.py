@@ -53,6 +53,12 @@ class TapFacebook(Tap):
             required=True,
         ),
         th.Property(
+            "app_secret",
+            th.StringType,
+            description="The app secret to authenticate against the API service",
+            required=False,
+        ),
+        th.Property(
             "api_version",
             th.StringType,
             description="The API version to request data from.",

@@ -12,6 +12,8 @@ plugins:
     - catalog
     - discover
     settings:
+    - name: app_secret
+      kind: password
     - name: access_token
       kind: password
     - name: start_date
