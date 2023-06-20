@@ -191,6 +191,12 @@ class AdsInsightStream(FacebookStream):
         """
         params: dict = {}
         params["limit"] = 25
+        h = hmac.new (
+          self.config["app_secret"].encode('utf-8'),
+          msg=self.config["access_token"].encode('utf-8'),
+          digestmod=hashlib.sha256
+        )
+        params["appsecret_proof"] = h.hexdigest()
         if next_page_token is not None:
             params["after"] = next_page_token
         if self.replication_key:
@@ -497,6 +503,7 @@ class AdsStream(FacebookStream):
           msg=self.config["access_token"].encode('utf-8'),
           digestmod=hashlib.sha256
         )
+        params["appsecret_proof"] = h.hexdigest()
         if next_page_token is not None:
             params["after"] = next_page_token
         if self.replication_key:
@@ -988,6 +995,7 @@ class CampaignStream(FacebookStream):
           msg=self.config["access_token"].encode('utf-8'),
           digestmod=hashlib.sha256
         )
+        params["appsecret_proof"] = h.hexdigest()
         if next_page_token is not None:
             params["after"] = next_page_token
         if self.replication_key:
@@ -1188,6 +1196,12 @@ class CreativeStream(FacebookStream):
         """
         params: dict = {}
         params["limit"] = 25
+        h = hmac.new (
+          self.config["app_secret"].encode('utf-8'),
+          msg=self.config["access_token"].encode('utf-8'),
+          digestmod=hashlib.sha256
+        )
+        params["appsecret_proof"] = h.hexdigest()
         if next_page_token is not None:
             params["after"] = next_page_token
         if self.replication_key:
@@ -1248,6 +1262,12 @@ class AdLabelsStream(FacebookStream):
         """
         params: dict = {}
         params["limit"] = 25
+        h = hmac.new (
+          self.config["app_secret"].encode('utf-8'),
+          msg=self.config["access_token"].encode('utf-8'),
+          digestmod=hashlib.sha256
+        )
+        params["appsecret_proof"] = h.hexdigest()
         if next_page_token is not None:
             params["after"] = next_page_token
         if self.replication_key:
@@ -1469,6 +1489,12 @@ class AdAccountsStream(FacebookStream):
         """
         params: dict = {}
         params["limit"] = 25
+        h = hmac.new (
+          self.config["app_secret"].encode('utf-8'),
+          msg=self.config["access_token"].encode('utf-8'),
+          digestmod=hashlib.sha256
+        )
+        params["appsecret_proof"] = h.hexdigest()
         if next_page_token is not None:
             params["after"] = next_page_token
         if self.replication_key:
@@ -1546,6 +1572,12 @@ class CustomConversions(FacebookStream):
         """
         params: dict = {}
         params["limit"] = 25
+        h = hmac.new (
+          self.config["app_secret"].encode('utf-8'),
+          msg=self.config["access_token"].encode('utf-8'),
+          digestmod=hashlib.sha256
+        )
+        params["appsecret_proof"] = h.hexdigest()
         if next_page_token is not None:
             params["after"] = next_page_token
         if self.replication_key:
@@ -1649,6 +1681,12 @@ class CustomAudiencesInternal(FacebookStream):
         """
         params: dict = {}
         params["limit"] = 25
+        h = hmac.new (
+          self.config["app_secret"].encode('utf-8'),
+          msg=self.config["access_token"].encode('utf-8'),
+          digestmod=hashlib.sha256
+        )
+        params["appsecret_proof"] = h.hexdigest()
         if next_page_token is not None:
             params["after"] = next_page_token
         if self.replication_key:
@@ -1694,6 +1732,12 @@ class CustomAudiences(CustomAudiencesInternal):
         """
         params: dict = {}
         params["limit"] = 25
+        h = hmac.new (
+          self.config["app_secret"].encode('utf-8'),
+          msg=self.config["access_token"].encode('utf-8'),
+          digestmod=hashlib.sha256
+        )
+        params["appsecret_proof"] = h.hexdigest()
         if next_page_token is not None:
             params["after"] = next_page_token
         if self.replication_key:
@@ -1775,6 +1819,12 @@ class AdImages(FacebookStream):
         """
         params: dict = {}
         params["limit"] = 25
+        h = hmac.new (
+          self.config["app_secret"].encode('utf-8'),
+          msg=self.config["access_token"].encode('utf-8'),
+          digestmod=hashlib.sha256
+        )
+        params["appsecret_proof"] = h.hexdigest()
         if next_page_token is not None:
             params["after"] = next_page_token
         if self.replication_key:
@@ -1900,6 +1950,12 @@ class AdVideos(FacebookStream):
         """
         params: dict = {}
         params["limit"] = 25
+        h = hmac.new (
+          self.config["app_secret"].encode('utf-8'),
+          msg=self.config["access_token"].encode('utf-8'),
+          digestmod=hashlib.sha256
+        )
+        params["appsecret_proof"] = h.hexdigest()
         if next_page_token is not None:
             params["after"] = next_page_token
         if self.replication_key:
