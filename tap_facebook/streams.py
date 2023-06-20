@@ -1,6 +1,8 @@
 """Stream type classes for tap-facebook."""
 
 from __future__ import annotations
+import hashlib
+import hmac
 
 import typing as t
 from pathlib import Path
@@ -490,6 +492,11 @@ class AdsStream(FacebookStream):
         """
         params: dict = {}
         params["limit"] = 25
+        h = hmac.new (
+          self.config["app_secret"].encode('utf-8'),
+          msg=self.config["access_token"].encode('utf-8'),
+          digestmod=hashlib.sha256
+        )
         if next_page_token is not None:
             params["after"] = next_page_token
         if self.replication_key:
@@ -792,6 +799,12 @@ class AdsetsStream(FacebookStream):
         """
         params: dict = {}
         params["limit"] = 25
+        h = hmac.new (
+          self.config["app_secret"].encode('utf-8'),
+          msg=self.config["access_token"].encode('utf-8'),
+          digestmod=hashlib.sha256
+        )
+        params["appsecret_proof"] = h.hexdigest()
         if next_page_token is not None:
             params["after"] = next_page_token
         if self.replication_key:
@@ -970,6 +983,11 @@ class CampaignStream(FacebookStream):
         """
         params: dict = {}
         params["limit"] = 25
+        h = hmac.new (
+          self.config["app_secret"].encode('utf-8'),
+          msg=self.config["access_token"].encode('utf-8'),
+          digestmod=hashlib.sha256
+        )
         if next_page_token is not None:
             params["after"] = next_page_token
         if self.replication_key:

@@ -91,12 +91,6 @@ class FacebookStream(RESTStream):
         """
         params: dict = {}
         params["limit"] = 25
-        h = hmac.new (
-          self.config["app_secret"].encode('utf-8'),
-          msg=self.config["access_token"].encode('utf-8'),
-          digestmod=hashlib.sha256
-        )
-        params["appsecret_proof"] = h.hexdigest()
         if next_page_token is not None:
             params["after"] = next_page_token
         if self.replication_key:
